@@ -1,0 +1,24 @@
+import streamlit as st
+from supabase import create_client
+st.set_page_config(page_title='Стена объявлений УУНиТ')
+st.title('Новости и мероприятия УУНиТ')
+st.write('Твой главный гид по кампусу: узнавай о событиях университета и находи направления по товим интересам')
+URL = 'https://prsionjsoghhfozqxjcc.supabase.co'
+KEY= 'sb_publishable_T68UTH0pU6HCGCMo8JdD6A_HiiatgI0'
+supabase = create_client(URL, KEY)
+def get_news():
+    try:
+        res = supabase.table('posts').select('*'). execute()
+        return res.data
+    except Exception as e:
+        st.error(f'Ошибка бэка: {e}')
+        return []
+all_news = get_news()
+if not all_news:
+    st.info('Пока новостей нет, добавьте первую!')
+else:
+    for post in all_news:
+        with st.container(border=True):
+            st.subheader(post.get('title', 'Без названия'))
+            st.caption(f'Категория: {post.get('category', 'Общее')}')
+            st.write(post.get('text', ''))
