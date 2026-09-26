@@ -88,6 +88,11 @@ def login():  # авторизация пользователя
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', form=form, title='Авторизация')
+@app.route('/maps')
+
+def maps():
+    return render_template('maps.html')
+
 
 @app.errorhandler(400)  # обработчик ошибки 400
 def bad_request(_):
