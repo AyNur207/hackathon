@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <link rel="stylesheet" type="text/css" href="{{css1}}"/>
 </head>
-<body>
-$END$
-</body>
-</html>
+<div id=na>
+    <header>
+        <h1>Профиль</h1>
+    </header>
+    <main>
+        <div id=hi>
+            <nav>
+                <div>
+                    <img class="profile_image" src="/{{user.photo}}" alt="изображение" height="200" width="200"
+                    >
+                </div>
+            </nav>
+            <section>
+                <h4>{{user.login}}</h4>
+                <ul>
+                    <li><h5>{{user.email}}</h5></li>
+                    <li><h5>+{{user.phone_number}}</h5></li></ul>
+            </section>
+        </div>
+        </nav>
+    </main>
+</div>
+{% endblock %}
