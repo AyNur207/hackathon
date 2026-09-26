@@ -1,0 +1,81 @@
+body {
+    background-color: #F6F6F6;
+    font-family: 'Golos Text', sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    color: #2A1468;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.card {
+    background-color: #4D19CC;
+    color: #F9FCFF;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: #5F30D1;
+    font-size: 1.25rem;
+}
+
+.card h3 {
+    color: #EFBB3E;
+}
+
+/* --- Карты кампуса --- */
+
+.map-card {
+    background-color: #E8E8E8;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid #CBB8FF;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-image-placeholder {
+    width: 100%;
+    background-color: #CBB8FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2A1468;
+    font-weight: 500;
+    text-align: center;
+    padding: 1rem;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: inherit;
+}
+
+.map-card-body {
+    padding: 1.25rem;
+}
+
+.map-card-body h3 {
+    color: #4D19CC;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.map-card-body p {
+    color: #2A1468;
+    margin-bottom: 0;
+    font-weight: 400;
+}

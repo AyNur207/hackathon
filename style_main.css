@@ -1,12 +1,18 @@
 body {
     background-color: #F6F6F6;
-    /* color: #F9FCFF; */
+    font-family: 'Golos Text', sans-serif;
 }
 
 h1 {
     font-weight: bold;
+    color: #2A1468;
 }
 
+.lead p {
+    color: #2A1468;
+    margin-bottom: 0;
+    font-weight: 400;
+}
 
 
 .card-link {
