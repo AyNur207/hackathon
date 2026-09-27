@@ -1,4 +1,3 @@
-# data.py
 
 TESTS = {
     "sport": {
