@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_main.css') }}">
+{% endblock %}
+{% block content %}
+<body>
+
+<main role="main" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <a href="{{ url_for('topics') }}" class="btn btn-sm btn-outline-secondary mb-3">← К выбору темы</a>
+
+            <h2 class="text-center mb-4">{{ test.icon }} {{ test.title }}</h2>
+
+            <div class="progress mb-2" style="height: 6px;">
+                <div class="progress-bar bg-warning" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div class="text-muted text-center mb-4 small">
+                Вопрос <span id="currentNum">1</span> из {{ test.questions|length }}
+            </div>
+
+            <form id="quizForm" method="POST" action="{{ url_for('result') }}">
+                <input type="hidden" name="topic" value="{{ topic }}">
+
+                {% for q in test.questions %}
+                    {% set outer_loop = loop %}
+                    <div class="slide" data-index="{{ loop.index0 }}" style="display: none;">
+                        <h4 class="mb-3">{{ q.text }}</h4>
+                        <div class="d-flex flex-column gap-2">
+                            {% for letter, text in q.answers.items() %}
+                                <label class="answer border rounded p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+                                    <input type="radio"
+                                           name="answers_{{ outer_loop.index0 }}"
+                                           value="{{ letter }}"
+                                           required
+                                           style="display: none;">
+                                    <span class="letter badge bg-secondary rounded-circle d-flex align-items-center justify-content-center"
+                                          style="width: 32px; height: 32px; font-size: 14px;">{{ letter }}</span>
+                                    <span>{{ text }}</span>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" id="prevBtn" class="btn btn-secondary">← Назад</button>
+                    <button type="button" id="nextBtn" class="btn btn-warning">Далее →</button>
+                    <button type="submit" id="submitBtn" class="btn btn-warning d-none">Показать результат</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const currentNum = document.getElementById('currentNum');
+    const progressBar = document.getElementById('progressBar');
+    const total = slides.length;
+    let current = 0;
+
+    function render() {
+        slides.forEach((s, i) => {
+            s.classList.toggle('active', i === current);
+            s.style.display = (i === current) ? 'block' : 'none';
+        });
+
+        currentNum.textContent = current + 1;
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+
+        prevBtn.disabled = current === 0;
+        prevBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+
+        if (current === total - 1) {
+            nextBtn.classList.add('d-none');
+            submitBtn.classList.remove('d-none');
+        } else {
+            nextBtn.classList.remove('d-none');
+            submitBtn.classList.add('d-none');
+        }
+    }
+
+    function isAnswered(index) {
+        const inputs = slides[index].querySelectorAll('input[type="radio"]');
+        return Array.from(inputs).some(i => i.checked);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (!isAnswered(current)) {
+            alert('Пожалуйста, выберите один из вариантов');
+            return;
+        }
+        if (current < total - 1) {
+            current++;
+            render();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (current > 0) {
+            current--;
+            render();
+        }
+    });
+
+    document.getElementById('quizForm').addEventListener('submit', (e) => {
+        for (let i = 0; i < total; i++) {
+            if (!isAnswered(i)) {
+                e.preventDefault();
+                current = i;
+                render();
+                alert('Вы ответили не на все вопросы');
+                return;
+            }
+        }
+    });
+
+    render();
+</script>
+</body>
+{% endblock %}

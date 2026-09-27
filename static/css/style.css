@@ -229,3 +229,33 @@ h1 { font-size: 32px; margin-bottom: 8px; }
 .back { display: inline-block; color: #4f46e5; text-decoration: none; margin-bottom: 24px; font-size: 14px; }
 .back:hover { text-decoration: underline; }
 
+/* Плавное появление слайда */
+.slide.active {
+    display: block !important;
+    animation: fade 0.25s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateX(10px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Подсветка ответа при наведении и выборе */
+.answer:hover {
+    background-color: #fefce8;
+    border-color: #facc15 !important;
+}
+
+.answer:has(input:checked) {
+    background-color: #fefce8;
+    border-color: #facc15 !important;
+}
+
+/* Подсветка буквы выбранного ответа */
+.answer input:checked ~ .letter {
+    background-color: #facc15 !important;
+    color: #1c1e26 !important;
+}
+
+/* Немного отступов для заголовков */
+h1, h2, h4 { line-height: 1.25; }

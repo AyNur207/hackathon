@@ -37,12 +37,18 @@ def index():
 
 
 
-@app.route("/test/<topic>")
-def test(topic):
-    """Страница прохождения теста."""
+@app.route("/topics")
+def topics():
+    """Выбор темы теста (спорт, танцы, творчество)."""
+    return render_template("topics.html", tests=TESTS)
+
+
+@app.route("/tests/<topic>")
+def tests(topic):
+    """Страница прохождения теста по выбранной теме."""
     if topic not in TESTS:
         return redirect(url_for("index"))
-    return render_template("test.html", topic=topic, test=TESTS[topic])
+    return render_template("tests.html", topic=topic, test=TESTS[topic])
 
 
 @app.route("/result", methods=["POST"])

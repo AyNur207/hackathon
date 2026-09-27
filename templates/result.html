@@ -1,33 +1,64 @@
-{% extends "base.html" %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block title %}Ваш результат{% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-{% block content %}
-    <div style="text-align: left;">
-        <a class="back" href="{{ url_for('index') }}">← В начало</a>
-        <h1 style="text-align: center;">Ваш результат</h1>
-        <p class="subtitle" style="text-align: center;">{{ test.icon }} {{ test.title }}</p>
-
-        <div class="result-card">
-            <div class="result-percent">{{ percent }}%</div>
-            <div class="result-name">{{ result.name }}</div>
-            <p class="result-desc">{{ result.description }}</p>
-
-            <h3>Рекомендуемые коллективы:</h3>
-            <ul class="clubs">
-                {% for club in result.clubs %}
-                    <li>
-                        <strong>{{ club.name }}</strong>
-                        <span class="contact">📩 {{ club.contact }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
+    <title>Ваш результат — Campus Helper</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/" style="color: yellow; font-weight: bold; font-size: 24px;">ИИМРТ</a>
+            <div>
+                <a class="btn btn-warning" href="/register">Зарегистрироваться</a>
+                <a class="btn btn-warning" href="/login">Войти</a>
+            </div>
         </div>
+    </nav>
+</header>
 
-        <div style="text-align: center;">
-            <a class="btn-yellow" style="display: inline-block; width: auto; padding: 12px 30px;" href="{{ url_for('test', topic=topic) }}">
-                Пройти заново
-            </a>
+<main role="main" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary mb-3">← На главную</a>
+
+            <h2 class="text-center mb-2">Ваш результат</h2>
+            <p class="text-center text-muted mb-4">{{ test.icon }} {{ test.title }}</p>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body p-4">
+                    <h1 class="text-warning display-4 fw-bold">{{ percent }}%</h1>
+                    <h4 class="card-title">{{ result.name }}</h4>
+                    <p class="card-text text-muted">{{ result.description }}</p>
+
+                    <h6 class="mt-4 mb-3">Рекомендуемые коллективы:</h6>
+                    <ul class="list-group">
+                        {% for club in result.clubs %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>{{ club.name }}</strong>
+                                <span class="text-muted small">📩 {{ club.contact }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('tests', topic=topic) }}" class="btn btn-warning px-4 py-2">
+                    Пройти заново
+                </a>
+                <a href="{{ url_for('topics') }}" class="btn btn-outline-secondary px-4 py-2 ms-2">
+                    Другая тема
+                </a>
+            </div>
         </div>
     </div>
-{% endblock %}
+</main>
+</body>
+</html>
