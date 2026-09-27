@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Campus Helper — Главная{% endblock %}
+
+{% block content %}
+    <h1>Campus Helper</h1>
+    <p class="subtitle">Всё, что нужно первокурснику — в одном месте.</p>
+
+    <div class="cards-grid">
+        <!-- Карточка 1 -->
+        <div class="card">
+            <div>
+                <div class="card-icon">📢</div>
+                <div class="card-title">Объявления</div>
+                <ul>
+                    <li>Новости</li>
+                    <li>Потеряно / найдено</li>
+                    <li>Мероприятия</li>
+                </ul>
+            </div>
+            <a href="#" class="btn-yellow">Открыть</a>
+        </div>
+
+        <!-- Карточка 2 (Наш тест) -->
+        <div class="card">
+            <div>
+                <div class="card-icon">🎯</div>
+                <div class="card-title">Найди себя</div>
+                <p class="card-desc">Пройди небольшие тесты и узнай, какие спортивные секции, клубы и студенческие организации тебе могут подойти.</p>
+            </div>
+            <a href="{{ url_for('test', topic='sport') }}" class="btn-yellow">Пройти тест</a>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="card">
+            <div>
+                <div class="card-icon">🗺️</div>
+                <div class="card-title">Карты кампуса</div>
+                <p class="card-desc">Схемы корпусов, расположение Wi-Fi, столовых, библиотек и других полезных мест.</p>
+            </div>
+            <a href="#" class="btn-yellow">Посмотреть</a>
+        </div>
+    </div>
+{% endblock %}

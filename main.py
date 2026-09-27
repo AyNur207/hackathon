@@ -5,6 +5,7 @@ from data import db_session
 from data.users_resources import UsersResource, UsersListResources
 from forms.login_form import LoginForm
 from forms.register_form import RegForm
+from data2 import TESTS
 
 from os.path import join, normpath
 from werkzeug.utils import secure_filename
@@ -32,7 +33,50 @@ n = 0
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return render_template('index.html', tests=TESTS)
+
+
+
+@app.route("/test/<topic>")
+def test(topic):
+    """Страница прохождения теста."""
+    if topic not in TESTS:
+        return redirect(url_for("index"))
+    return render_template("test.html", topic=topic, test=TESTS[topic])
+
+
+@app.route("/result", methods=["POST"])
+def result():
+    """Обработка ответов и вывод результата."""
+    topic = request.form.get("topic")
+    if topic not in TESTS:
+        return redirect(url_for("index"))
+
+    test = TESTS[topic]
+    counts = {"А": 0, "Б": 0, "В": 0, "Г": 0}
+
+    # Считаем ответы (в форме поля answers_0, answers_1, ...)
+    for key, value in request.form.items():
+        if key.startswith("answers_") and value in counts:
+            counts[value] += 1
+
+    # Находим букву-победителя
+    winner = max(counts, key=counts.get)
+    top_result = test["results"][winner]
+
+    # Считаем процент совпадения
+    total = sum(counts.values()) or 1
+    percent = round(counts[winner] / total * 100)
+
+    return render_template(
+        "result.html",
+        topic=topic,  # Передаем тему, чтобы кнопка "Пройти заново" работала
+        test=test,
+        result=top_result,
+        winner=winner,
+        percent=percent,
+    )
+
 
 @app.route('/profile/<int:id>')  # обработчик профиля пользователя
 def profile(id):
