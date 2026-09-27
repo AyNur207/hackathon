@@ -29,7 +29,13 @@ else:
             if post.get('category') == 'Новость':
                 found_news = True
                 with st.container(border=True):
-                    st.subheader(post.get('title', 'Без названия'))
+                    st.subheader(f"{post.get('title', 'Без названия')}")
+                    if post.get('event_date'):
+                        st.markdown(f'**{post.get('event_date')}**')
+                    if post.get('description'):
+                        st.write(post.get('description'))
+                    if post.get('link'):
+                        st.link_button('Поподробнее', post.get('link'))
         if not found_news:
             st.write('Новостей пока нет')
     with tab_events:
@@ -38,7 +44,13 @@ else:
             if post.get('category') == 'Мероприятие':
                 found_events = True
                 with st.container(border=True):
-                    st.subheader(post.get('title', 'Без названия'))
-            if not found_events:
-                st.write('Мероприятий пока нет')
+                    st.subheader(f'{post.get('title', 'Без названия')}')
+                    if post.get('event_date') and post.get('event_date') != 'None':
+                        st.markdown(f'**{post.get('event_date')}**')
+                        if post.get('description'):
+                            st.write(post.get('description'))
+                        if post.get('link'):
+                            st.link_button('Поподробнее', post.get('link'))
+        if not found_news:
+                st.write('Новостей пока нет')
 
