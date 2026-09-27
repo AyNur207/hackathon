@@ -2,59 +2,59 @@
 
 {% block styles %}
 <link rel="stylesheet"
-      href="{{ url_for('static', filename='css/style_main.css') }}">
+      href="{{ url_for('static', filename='css/style_tests.css') }}">
+<!-- <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_main.css') }}"> -->
 {% endblock %}
+{% block title %}Campus Helper — Тесты{% endblock %}
 {% block content %}
-<body>
+<div class="row justify-content-center">
+    <div class="col-md-8">
 
-<main role="main" class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <a href="{{ url_for('topics') }}" class="btn btn-sm btn-outline-secondary mb-3">← К выбору темы</a>
 
-            <a href="{{ url_for('topics') }}" class="btn btn-sm btn-outline-secondary mb-3">← К выбору темы</a>
+        <h2 class="text-center mb-4">{{ test.icon }} {{ test.title }}</h2>
 
-            <h2 class="text-center mb-4">{{ test.icon }} {{ test.title }}</h2>
-
-            <div class="progress mb-2" style="height: 6px;">
-                <div class="progress-bar bg-warning" id="progressBar" style="width: 0%;"></div>
-            </div>
-            <div class="text-muted text-center mb-4 small">
-                Вопрос <span id="currentNum">1</span> из {{ test.questions|length }}
-            </div>
-
-            <form id="quizForm" method="POST" action="{{ url_for('result') }}">
-                <input type="hidden" name="topic" value="{{ topic }}">
-
-                {% for q in test.questions %}
-                    {% set outer_loop = loop %}
-                    <div class="slide" data-index="{{ loop.index0 }}" style="display: none;">
-                        <h4 class="mb-3">{{ q.text }}</h4>
-                        <div class="d-flex flex-column gap-2">
-                            {% for letter, text in q.answers.items() %}
-                                <label class="answer border rounded p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
-                                    <input type="radio"
-                                           name="answers_{{ outer_loop.index0 }}"
-                                           value="{{ letter }}"
-                                           required
-                                           style="display: none;">
-                                    <span class="letter badge bg-secondary rounded-circle d-flex align-items-center justify-content-center"
-                                          style="width: 32px; height: 32px; font-size: 14px;">{{ letter }}</span>
-                                    <span>{{ text }}</span>
-                                </label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-
-                <div class="d-flex justify-content-between mt-4">
-                    <button type="button" id="prevBtn" class="btn btn-secondary">← Назад</button>
-                    <button type="button" id="nextBtn" class="btn btn-warning">Далее →</button>
-                    <button type="submit" id="submitBtn" class="btn btn-warning d-none">Показать результат</button>
-                </div>
-            </form>
+        <div class="progress mb-2" style="height: 6px;">
+            <div class="progress-bar bg-warning" id="progressBar" style="width: 0%;"></div>
         </div>
+        <div class="text-muted text-center mb-4 small">
+            Вопрос <span id="currentNum">1</span> из {{ test.questions|length }}
+        </div>
+
+        <form id="quizForm" method="POST" action="{{ url_for('result') }}">
+            <input type="hidden" name="topic" value="{{ topic }}">
+
+            {% for q in test.questions %}
+                {% set outer_loop = loop %}
+                <div class="slide" data-index="{{ loop.index0 }}" style="display: none;">
+                    <h4 class="mb-3">{{ q.text }}</h4>
+                    <div class="d-flex flex-column gap-2">
+                        {% for letter, text in q.answers.items() %}
+                            <label class="answer border rounded p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+                                <input type="radio"
+                                        name="answers_{{ outer_loop.index0 }}"
+                                        value="{{ letter }}"
+                                        required
+                                        style="display: none;">
+                                <span class="letter badge bg-secondary rounded-circle d-flex align-items-center justify-content-center"
+                                        style="width: 32px; height: 32px; font-size: 14px;">{{ letter }}</span>
+                                <span>{{ text }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" id="prevBtn" class="btn btn-secondary">← Назад</button>
+                <button type="button" id="nextBtn" class="btn btn-warning">Далее →</button>
+                <button type="submit" id="submitBtn" class="btn btn-warning d-none">Показать результат</button>
+            </div>
+        </form>
     </div>
-</main>
+</div>
+
 
 <script>
     const slides = document.querySelectorAll('.slide');
@@ -124,5 +124,4 @@
 
     render();
 </script>
-</body>
 {% endblock %}

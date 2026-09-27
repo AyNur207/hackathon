@@ -4,33 +4,32 @@
 <link rel="stylesheet"
       href="{{ url_for('static', filename='css/style_main.css') }}">
 {% endblock %}
+{% block title %}Campus Helper — Темы тестов{% endblock %}
 {% block content %}
-<body>
-<main role="main" class="container mt-5">
-    <div class="text-center mb-4">
-        <a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary mb-3">← На главную</a>
-        <h1>Выбери тему теста</h1>
-        <p class="lead">Пройди небольшой тест — и узнай, что тебе подойдёт</p>
-    </div>
+<div class="container mt-0">
+<div class="text-center mb-4">
+    <a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary mb-3">← На главную</a>
+    <h1>Выбери тему теста</h1>
+    <p class="lead">Пройди небольшой тест — и узнай, что тебе подойдёт</p>
+</div>
 
-    <div class="row g-4">
-        {% for key, t in tests.items() %}
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <h1>{{ t.icon }}</h1>
-                    <h4 class="card-title">{{ t.title }}</h4>
-                    <p class="card-text">{{ t.description }}</p>
-                </div>
-                <div class="card-footer bg-white border-0">
-                    <a href="{{ url_for('tests', topic=key) }}" class="btn btn-warning w-100">
-                        Пройти
-                    </a>
-                </div>
+<div class="row g-4">
+    {% for key, t in tests.items() %}
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h1>{{ t.icon }}</h1>
+                <h4 class="card-title">{{ t.title }}</h4>
+                <p class="card-text">{{ t.description }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <a href="{{ url_for('tests', topic=key) }}" class="btn btn-warning w-100">
+                    Пройти
+                </a>
             </div>
         </div>
-        {% endfor %}
     </div>
-</main>
-</body>
+    {% endfor %}
+</div>
+</div>
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}{{ test.title }} — Тест{% endblock %}
+{% block styles %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_tests.css') }}">
+{% endblock %}
+
+
+
+{% block title %}Campus Helper — Тест{% endblock %}
 
 {% block content %}
     <div style="text-align: left;">
