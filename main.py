@@ -5,7 +5,7 @@ from data import db_session
 from data.users_resources import UsersResource, UsersListResources
 from forms.login_form import LoginForm
 from forms.register_form import RegForm
-from data2 import TESTS
+from test import TESTS
 
 from os.path import join, normpath
 from werkzeug.utils import secure_filename
