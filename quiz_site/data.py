@@ -159,7 +159,6 @@ TESTS = {
                 "clubs": [
                     {"name": "Танцевальный проект «Атмосфера»", "contact": "dance@uust.ru"},
                     {"name": "Watermelons CREW", "contact": "dance@uust.ru"},
-                    {"name": "ДаблХит", "contact": "dance@uust.ru"},
                 ],
             },
             "В": {
@@ -237,25 +236,27 @@ TESTS = {
                 "description": "Вам подойдут музыкальные и вокальные коллективы.",
                 "clubs": [
                     {"name": "Ансамбль кураистов «Актамыр»", "contact": "art@uust.ru"},
-                    {"name": "Духовой оркестр", "contact": "art@uust.ru"},
-                    {"name": "Вокальная студия «Глория»", "contact": "art@uust.ru"},
+                    {"name": "Вокальная студия «Септима»", "contact": "art@uust.ru"},
+                    {"name": "Кавер-группа «Моментов море»", "contact": "art@uust.ru"},
                 ],
             },
             "Б": {
                 "name": "Театр и КВН",
                 "description": "Вам подойдут театральные коллективы и команды КВН.",
                 "clubs": [
-                    {"name": "Театр «Сказка»", "contact": "art@uust.ru"},
                     {"name": "Команда КВН УУНиТ", "contact": "art@uust.ru"},
+                    {"name": "Русский студенческий театр «Гротеск» ", "contact": "art@uust.ru"},
+                    {"name": "Башкирский народный студенческий театр «Оскон» («Искра») ", "contact": "art@uust.ru"},
+                    {"name": "Татарский музыкально-поэтический театр «Сэлэт» ", "contact": "art@uust.ru"},
                 ],
             },
             "В": {
                 "name": "Медиа и журналистика",
                 "description": "Вам стоит попробовать себя в медиацентре.",
                 "clubs": [
-                    {"name": "ТВ-студия", "contact": "art@uust.ru"},
-                    {"name": "Медиацентр", "contact": "art@uust.ru"},
-                    {"name": "Студия «Проба пера»", "contact": "art@uust.ru"},
+                    {"name": "Видеостудия Jalinga (Джалинга) УУНиТ", "contact": "art@uust.ru"},
+                    {"name": "Студенческий медиацентр «STUDBIT»", "contact": "art@uust.ru"},
+                    {"name": "Студенческий медиацентр «Айда Медиа»", "contact": "art@uust.ru"},
                 ],
             },
             "Г": {

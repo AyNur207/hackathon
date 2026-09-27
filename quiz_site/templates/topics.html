@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Выбор темы — Campus Helper</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/" style="color: yellow; font-weight: bold; font-size: 24px;">ИИМРТ</a>
+            <div>
+                <a class="btn btn-warning" href="/register">Зарегистрироваться</a>
+                <a class="btn btn-warning" href="/login">Войти</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="container mt-5">
+    <div class="text-center mb-4">
+        <a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary mb-3">← На главную</a>
+        <h1>Выбери тему теста</h1>
+        <p class="lead">Пройди небольшой тест — и узнай, что тебе подойдёт</p>
+    </div>
+
+    <div class="row g-4">
+        {% for key, t in tests.items() %}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h1>{{ t.icon }}</h1>
+                    <h4 class="card-title">{{ t.title }}</h4>
+                    <p class="card-text">{{ t.description }}</p>
+                </div>
+                <div class="card-footer bg-white border-0">
+                    <a href="{{ url_for('tests', topic=key) }}" class="btn btn-warning w-100">
+                        Пройти
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>
