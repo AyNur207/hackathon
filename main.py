@@ -14,7 +14,7 @@ import config
 import pymorphy3
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config['SECRET_KEY'] = 'FlaskSecretKey_2026_7xK9pL2'
 app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDERS
 api = Api(app)
 login_manager = LoginManager()

@@ -36,3 +36,8 @@ form {
 #profile_name {
     color: white;
 }
+
+.navbar-dark{
+    color: transparent;
+    -webkit-text-stroke: 1px #EFBB3E;
+}
