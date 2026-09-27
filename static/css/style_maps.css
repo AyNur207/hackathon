@@ -8,6 +8,11 @@ h1 {
     color: #2A1468;
 }
 
+div {
+    padding: 0;
+    margin: 0;
+}
+
 .card-link {
     text-decoration: none;
     color: inherit;
@@ -29,11 +34,16 @@ h1 {
     font-size: 1.25rem;
 }
 
+
+
 .card h3 {
     color: #EFBB3E;
 }
 
 /* --- Карты кампуса --- */
+
+
+
 
 .map-card {
     background-color: #E8E8E8;
@@ -53,19 +63,30 @@ h1 {
     color: #2A1468;
     font-weight: 500;
     text-align: center;
-    padding: 1rem;
+}
+
+
+.map-image-placeholder a {
+    display: block;
+    width: 100%;
 }
 
 .map-image {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
-    aspect-ratio: inherit;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
 }
 
+.map-image:hover {
+    transform: scale(1.02);
+}
+
+
+
 .map-card-body {
-    padding: 1.25rem;
+    padding: 1rem;
 }
 
 .map-card-body h3 {
