@@ -1,28 +1,57 @@
 {% extends "base.html" %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_profile.css') }}">
+{% endblock %}
+
 {% block content %}
-<head>
-    <link rel="stylesheet" type="text/css" href="{{css1}}"/>
-</head>
-<div id=na>
-    <header>
-        <h1>Профиль</h1>
-    </header>
-    <main>
-        <div id=hi>
-            <nav>
-                <div>
-                    <img class="profile_image" src="/{{user.photo}}" alt="изображение" height="200" width="200"
-                    >
+
+<div class="container py-5">
+
+    <h1 class="text-center profile-title mb-5">
+        Профиль
+    </h1>
+
+    <div class="profile-card mx-auto shadow">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-md-4 text-center">
+                <img
+                    class="profile-image"
+                    src="/{{ user.photo }}"
+                    alt="Фото профиля">
+            </div>
+
+            <div class="col-md-8">
+
+                <h2 class="username">
+                    {{ user.login }}
+                </h2>
+
+                <div class="profile-info mt-4">
+
+                    <div class="info-item">
+                        <strong>Email</strong><br>
+                        {{ user.email }}
+                    </div>
+
+                    <div class="info-item">
+                        <strong>Телефон</strong><br>
+                        +{{ user.phone_number }}
+                    </div>
+
                 </div>
-            </nav>
-            <section>
-                <h4>{{user.login}}</h4>
-                <ul>
-                    <li><h5>{{user.email}}</h5></li>
-                    <li><h5>+{{user.phone_number}}</h5></li></ul>
-            </section>
+
+            </div>
+
         </div>
-        </nav>
-    </main>
+
+    </div>
+
 </div>
+
 {% endblock %}
