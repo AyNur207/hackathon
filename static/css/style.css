@@ -1,6 +1,12 @@
 * {box-sizing: border-box;}
-body{margin: 0;}
+body {
+  margin: 0;
+  background-color: #F6F6F6;
+  font-family: 'Golos Text', sans-serif;}
 div {padding: 30px 0}
+
+
+
 form {
   position: relative;
   width: 700px;
@@ -29,7 +35,6 @@ form {
 }
 .d1 button:before {
   content: "Поиск";
-  font-family: FontAwesome;
   font-size: 16px;
   color: #F9F0DA;
 }
