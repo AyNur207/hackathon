@@ -8,7 +8,7 @@
 
 body {
   margin: 0;
-  background-color: #F6F6F6;
+  background-color: var(--back-color);
   font-family: 'Golos Text', sans-serif;
 }
 

@@ -5,7 +5,7 @@
 
 .profile-card{
     max-width:900px;
-    background:white;
+    background:var(--back-color);
     border-radius:18px;
     border-top:8px solid #4D19CC;
     padding:2rem;
@@ -19,7 +19,7 @@
     border-radius:50%;
 
     border:6px solid #CBB8FF;
-    background:white;
+    background:var(--back-color);
 }
 
 .username{
@@ -43,4 +43,32 @@
 
 .info-item strong{
     color:#4D19CC;
+}
+
+.links-card {
+    margin-top: 2rem;
+    background: #e8e8e8;
+    border: 2px solid #cbb8ff;
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+.links-card h3 {
+    color: #2a1468;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.links-card .list-group-item {
+    background: #ffffff;
+    border: 1px solid #cbb8ff;
+    color: #2a1468;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.links-card .list-group-item:hover {
+    background: #4d19cc;
+    color: var(--back-color);
+    border-color: #4d19cc;
 }

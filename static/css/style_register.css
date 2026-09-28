@@ -33,7 +33,7 @@
 
 .register-btn {
     background: #4d19cc;
-    color: white;
+    color: var(--back-color);
     font-size: 1.1rem;
     font-weight: 600;
     padding: .75rem;
@@ -43,7 +43,7 @@
 
 .register-btn:hover {
     background: #2a1468;
-    color: white;
+    color: var(--back-color);
 }
 
 .alert {

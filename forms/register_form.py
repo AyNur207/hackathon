@@ -8,5 +8,5 @@ class RegForm(FlaskForm):  # форма регистрации
     password = PasswordField('Пароль', validators=[DataRequired()])
     password_again = PasswordField('Повтор пароля', validators=[DataRequired()])
     phone_number = StringField('Телефон', validators=[DataRequired()])
-    login = StringField('Логин', validators=[DataRequired()])
+    login = StringField('Учетное имя', validators=[DataRequired()])
     submit = SubmitField('Зарегистрироваться')
