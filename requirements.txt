@@ -6,3 +6,5 @@ SQLAlchemy
 sqlalchemy-serializer
 pymorphy3
 Werkzeug
+streamlit
+supabase
